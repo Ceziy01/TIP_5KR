@@ -33,12 +33,9 @@ async function searchRecipes(query) {
 function displayResponse(data) {
     const responseDiv = document.getElementById('response');
     responseDiv.textContent = JSON.stringify(data, null, 2);
-    
-    // Подсветка синтаксиса
     responseDiv.innerHTML = hljs.highlight('json', responseDiv.textContent).value;
 }
 
-// Пример создания рецепта через консоль
 async function createSampleRecipe() {
     const newRecipe = {
         title: "Паста Карбонара",
