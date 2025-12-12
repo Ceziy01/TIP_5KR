@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог рецептов</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Каталог рецептов</h1>
+            <p>API сервер для управления рецептами</p>
+        </header>
+
+        <main>
+            <section class="api-info">
+                <h2>Доступные эндпоинты API:</h2>
+                
+                <div class="endpoint">
+                    <h3>GET /api/recipes</h3>
+                    <p>Получить все рецепты</p>
+                    <code>GET http://localhost:3000/api/recipes</code>
+                </div>
+
+                <div class="endpoint">
+                    <h3>GET /api/recipes/:id</h3>
+                    <p>Получить рецепт по ID</p>
+                    <code>GET http://localhost:3000/api/recipes/1</code>
+                </div>
+
+                <div class="endpoint">
+                    <h3>GET /api/recipes/search</h3>
+                    <p>Поиск рецептов</p>
+                    <code>GET http://localhost:3000/api/recipes/search?q=борщ</code>
+                    <p>Фильтрация:</p>
+                    <ul>
+                        <li><code>?category=супы</code></li>
+                        <li><code>?difficulty=легкая</code></li>
+                        <li><code>?maxTime=30</code></li>
+                    </ul>
+                </div>
+
+                <div class="endpoint">
+                    <h3>POST /api/recipes</h3>
+                    <p>Создать новый рецепт</p>
+                    <code>POST http://localhost:3000/api/recipes</code>
+                    <pre>
+{
+    "title": "Название рецепта",
+    "category": "категория",
+    "ingredients": ["ингредиент1", "ингредиент2"],
+    "instructions": "Инструкция приготовления",
+    "cookingTime": 45,
+    "difficulty": "средняя"
+}
+                    </pre>
+                </div>
+
+                <div class="endpoint">
+                    <h3>PUT /api/recipes/:id</h3>
+                    <p>Обновить рецепт</p>
+                    <code>PUT http://localhost:3000/api/recipes/1</code>
+                </div>
+
+                <div class="endpoint">
+                    <h3>DELETE /api/recipes/:id</h3>
+                    <p>Удалить рецепт</p>
+                    <code>DELETE http://localhost:3000/api/recipes/1</code>
+                </div>
+            </section>
+
+            <section class="test-form">
+                <h2>Тестирование API</h2>
+                <div id="response"></div>
+                <div class="buttons">
+                    <button onclick="getRecipes()">Получить все рецепты</button>
+                    <button onclick="getRecipeById(1)">Получить рецепт ID=1</button>
+                    <button onclick="searchRecipes('борщ')">Поиск "борщ"</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
